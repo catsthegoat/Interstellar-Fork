@@ -7,7 +7,8 @@ Interstellar is a web proxy application with a clean UI providing access to game
 - Configured for Replit environment
 - Updated server to bind to 0.0.0.0:5000 (required for Replit webview)
 - Upgraded to Node.js 20 (from Node 16)
-- Disabled password protection by default for easier testing
+- **Password protection ENABLED** with username: interstellar, password: emma
+- Removed "Request An App" and "Interstellar FAQ/Docs" from apps listing
 - Configured autoscale deployment
 - Updated .gitignore with proper Node.js patterns
 
@@ -32,18 +33,17 @@ Interstellar is a web proxy application with a clean UI providing access to game
 - **Static Files**: Served from /static directory
 
 ## Password Protection
-Password protection is **disabled by default** (`challenge: false` in config.js).
+Password protection is **enabled** (`challenge: true` in config.js).
 
-To enable password protection:
-1. Edit `config.js` and set `challenge: true`
-2. Configure users in the `users` object (username: password pairs)
-3. Restart the server
-
-Default credentials (when enabled):
+Current credentials:
 - Username: `interstellar`
 - Password: `emma`
 
-**Note**: For production deployments, consider using an environment variable to control password protection.
+To disable password protection:
+1. Edit `config.js` and set `challenge: false`
+2. Restart the server
+
+To add more users, edit the `users` object in `config.js` with username: password pairs.
 
 ## Deployment
 - **Development**: Runs on port 5000 with `npm start`

@@ -18,7 +18,8 @@ const __dirname = process.cwd();
 const server = http.createServer();
 const app = express();
 const bareServer = createBareServer("/ca/");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
+const HOST = "0.0.0.0";
 const cache = new Map();
 const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
 
@@ -139,7 +140,7 @@ server.on("upgrade", (req, socket, head) => {
 });
 
 server.on("listening", () => {
-  console.log(chalk.green(`🌍 Server is running on http://localhost:${PORT}`));
+  console.log(chalk.green(`🌍 Server is running on http://${HOST}:${PORT}`));
 });
 
-server.listen({ port: PORT });
+server.listen({ port: PORT, host: HOST });
